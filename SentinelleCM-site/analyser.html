@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analyser un message — SentinelleCM</title>
+<meta name="description" content="Collez un SMS ou message Mobile Money suspect et obtenez instantanément un score de risque et une explication claire.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progress-bar"></div>
+
+<div class="marquee"><div class="marquee-track">
+  <span><svg class="ico ico-flag" viewBox="0 0 30 20" aria-hidden="true"><rect width="10" height="20" fill="#007A5E"/><rect x="10" width="10" height="20" fill="#CE1126"/><rect x="20" width="10" height="20" fill="#FCD116"/><polygon points="15.00,5.80 16.00,8.62 18.99,8.70 16.62,10.53 17.47,13.40 15.00,11.70 12.53,13.40 13.38,10.53 11.01,8.70 14.00,8.62" fill="#FCD116"/></svg> Gratuit pour tous les citoyens</span>
+  <span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg> Protégez votre argent Mobile Money</span>
+  <span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg> Analyse en quelques secondes</span>
+  <span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></svg> Intelligence artificielle</span>
+</div></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 2 L28 7 V15 C28 23 22.5 28.5 16 30 C9.5 28.5 4 23 4 15 V7 Z" stroke="#1F8A55" stroke-width="2" fill="#DCEFE1"/>
+        <path d="M11 16 L14.5 19.5 L21.5 12" stroke="#1F8A55" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      SentinelleCM
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="comment-ca-marche.html">Comment ça marche</a>
+      <a href="analyser.html">Analyser</a>
+      <a href="a-propos.html">À propos</a>
+    </nav>
+    <div class="nav-right">
+      <a href="analyser.html" class="btn-cta-nav"><span class="long">Tester</span> l'analyseur</a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Accueil</a>
+    <a href="comment-ca-marche.html">Comment ça marche</a>
+    <a href="analyser.html">Analyser</a>
+    <a href="a-propos.html">À propos</a>
+  </div>
+</header>
+
+<div class="page-nav-wrap">
+  <nav class="page-nav" aria-label="Sommaire de la page">
+    <span class="page-nav-label">Sur cette page</span>
+    <a href="#outil">Tester l'outil</a>
+    <a href="#communaute">Base communautaire</a>
+  </nav>
+</div>
+
+<section class="page-header" style="padding-bottom:0;">
+  <div class="wrap">
+    <span class="kicker reveal">Analyseur en direct</span>
+    <h1 class="reveal">Testez-le avec un vrai message</h1>
+    <p class="reveal">Ce moteur d'analyse fonctionne réellement dans votre navigateur — collez un message reçu, ou partez d'un exemple, pour voir le raisonnement de SentinelleCM.</p>
+  </div>
+</section>
+
+<section id="outil">
+  <div class="wrap">
+    <div class="demo-panel reveal">
+      <div class="demo-examples">
+        <button class="example-btn" data-sample="fraud"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg> Exemple frauduleux</button>
+        <button class="example-btn" data-sample="legit"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Exemple légitime</button>
+        <button class="example-btn" data-sample="phishing"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 18a6 6 0 0 0 0-12v12z"/></svg> Exemple ambigu</button>
+      </div>
+
+      <textarea id="sms-input" placeholder="Collez ici le SMS ou message WhatsApp que vous avez reçu…"></textarea>
+
+      <div class="demo-actions">
+        <button class="btn btn-primary" id="analyze-btn">Analyser ce message</button>
+        <button class="btn btn-outline" id="clear-btn">Vider</button>
+      </div>
+
+      <div class="result" id="result">
+        <div class="result-top">
+          <div class="gauge" id="gauge">
+            <svg width="112" height="112" viewBox="0 0 104 104">
+              <circle cx="52" cy="52" r="44" fill="none" stroke="var(--line)" stroke-width="9"/>
+              <circle id="gauge-fill" cx="52" cy="52" r="44" fill="none" stroke="var(--green)" stroke-width="9" stroke-linecap="round" stroke-dasharray="276" stroke-dashoffset="276" transform="rotate(-90 52 52)"/>
+            </svg>
+            <span class="gauge-score" id="gauge-score">0%</span>
+            <span class="gauge-label">niveau de risque</span>
+          </div>
+          <div>
+            <div class="verdict-title" id="verdict-title">—</div>
+            <div class="verdict-sub" id="verdict-sub"></div>
+          </div>
+        </div>
+
+        <ul class="flags-list" id="flags-list"></ul>
+
+        <div class="recommendation" id="recommendation"></div>
+
+        <div class="report-row">
+          <button class="btn btn-outline" id="report-btn">Signaler à la communauté</button>
+          <span class="toast" id="toast">Merci — fonctionnalité de signalement en réseau prévue en phase de déploiement.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blob-section bg-sand" id="communaute">
+  <div class="wrap">
+    <span class="kicker reveal">Aperçu — base communautaire</span>
+    <h2 class="section-title reveal" style="margin-bottom:8px;">Ce que verront les utilisateurs demain</h2>
+    <div class="illustration-note reveal"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 18a6 6 0 0 0 0-12v12z"/></svg> Illustration — fonctionnalité prévue en phase de déploiement, données fictives à titre d'exemple</div>
+    <div class="alert-cards">
+      <div class="alert-card reveal">
+        <span class="tag">CAMPAGNE — LOTERIE MOMO</span>
+        <p>"Vous avez remporté 350.000 FCFA... composez *126*1234#"</p>
+        <time>Exemple — signalé 47 fois</time>
+      </div>
+      <div class="alert-card reveal">
+        <span class="tag">CAMPAGNE — PHISHING ORANGE</span>
+        <p>"Votre compte sera suspendu dans 24h. Cliquez : bit.ly/om-verif"</p>
+        <time>Exemple — signalé 31 fois</time>
+      </div>
+      <div class="alert-card reveal">
+        <span class="tag">CAMPAGNE — FAUX PROCHE</span>
+        <p>"C'est moi, j'ai un nouveau numéro, envoie-moi vite 5000F"</p>
+        <time>Exemple — signalé 19 fois</time>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="footer-brand">
+        <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><path d="M16 2 L28 7 V15 C28 23 22.5 28.5 16 30 C9.5 28.5 4 23 4 15 V7 Z" stroke="#1F8A55" stroke-width="2" fill="#DCEFE1"/><path d="M11 16 L14.5 19.5 L21.5 12" stroke="#1F8A55" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        SentinelleCM
+      </div>
+      <p class="footer-note">Prototype développé par KAMGUIA KAMGAING Mielwin dans le cadre du Concours National du Meilleur Projet TIC 2026 — MINPOSTEL, 5ème édition de la Semaine de l'Innovation Numérique.</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="comment-ca-marche.html">Fonctionnement</a>
+      <a href="analyser.html">Analyseur</a>
+      <a href="a-propos.html">À propos</a>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="back-to-top" aria-label="Retour en haut de page">
+  <svg viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script src="assets/nav.js"></script>
+<script src="assets/analyzer.js"></script>
+</body>
+</html>
